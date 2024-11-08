@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        } 
+
+        ul {
+            margin: 100px;
+        }
+
+        ul li {
+            width: 135px;
+            height: 35px;
+            /* 需要给box旋转，好需要保持透视效果 */
+            perspective: 500px;
+        }
+
+        .box {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style:preserve-3d;
+            transition:all .4s;
+        }
+
+        .box:hover {
+            transform:rotateX(90deg);
+        }
+
+        .front,
+        .bottom {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            line-height: 35px;
+            text-align: center;
+        }
+
+        .front {
+            background-color: orange;
+            transform: translateZ(17.5px);
+        }
+
+        .bottom {
+            background-color: skyblue;
+            /* 如果有移动和旋转需要先移动后旋转 */
+            transform: translateY(50%) rotateX(-90deg);
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>
+            <div class="box">
+                <div class="front">first</div>
+                <div class="bottom">second</div>
+            </div>
+        </li>
+    </ul>
+</body>
+</html>
